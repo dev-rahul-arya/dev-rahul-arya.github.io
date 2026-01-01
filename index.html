@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,144 +8,68 @@
     <script>
         tailwind.config = {
             darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#ffffff',
+                            secondary: '#f9f9f9',
+                            text: '#1d1d1f',
+                            muted: '#6e6e73',
+                            accent: '#d97757',
+                            border: '#e5e5e5',
+                            darkBg: '#171717',
+                            darkSecondary: '#212121',
+                            darkText: '#ededed',
+                            darkMuted: '#a1a1a1',
+                            darkBorder: '#333333',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
         }
     </script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-
-            /* Light Theme */
-            --background-light: #dce7ee;
-            --text-light: #2c2e31;
-            --card-bg-light: #ffffff;
-            --border-light: #cbd5e1;
-            /* Darkened slightly for better visibility */
-            --primary-light: #4c43ad;
-            --primary-hover-light: #4338ca;
-            --accent-light: #8b5cf6;
-
-            /* Dark Theme */
-            --background-dark: #1a202c;
-            --text-dark: #e2e8f0;
-            --text-muted-dark: #a0aec0;
-            --card-bg-dark: #2d3748;
-            --border-dark: #4a5568;
-            --primary-dark: #818cf8;
-            --primary-hover-dark: #6366f1;
-            --accent-dark: #a78bfa;
+            --brand-accent: #d97757;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
         }
 
-        /* Experience Timeline */
-        .timeline-item {
-            position: relative;
-            padding-left: 2rem;
-            border-left: 2px solid var(--border-light);
-            margin-bottom: 3rem;
+        .ui-card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
 
-        .dark .timeline-item {
-            border-left-color: var(--border-dark);
+        .dark .ui-card {
+            background: #212121;
+            border-color: #333333;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .timeline-item:last-child {
-            margin-bottom: 0;
-            border-left-color: transparent;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -0.55rem;
-            top: 0;
-            width: 1.1rem;
-            height: 1.1rem;
-            border-radius: 50%;
-            background-color: var(--primary-light);
-            border: 4px solid var(--card-bg-light);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 0 2px var(--border-light);
-        }
-
-        .dark .timeline-item::before {
-            background-color: var(--primary-dark);
-            border-color: var(--card-bg-dark);
-            box-shadow: 0 0 0 2px var(--border-dark);
-        }
-
-        .timeline-item:hover::before {
-            transform: scale(1.3);
-            background-color: var(--accent-light);
-            box-shadow: 0 0 15px var(--accent-light);
-        }
-
-        .dark .timeline-item:hover::before {
-            background-color: var(--accent-dark);
-            box-shadow: 0 0 15px var(--accent-dark);
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Outfit', sans-serif;
-            letter-spacing: -0.02em;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        main {
-            flex-grow: 1;
-        }
-
-        .light {
-            background-color: var(--background-light);
-            color: var(--text-light);
-        }
-
-        .dark {
-            background-color: var(--background-dark);
-            color: var(--text-dark);
-        }
-
-        /* Glassmorphism Card Style */
-        .card {
-            background-color: var(--card-bg-light);
-            border: 1px solid var(--border-light);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .dark .card {
-            background-color: var(--card-bg-dark);
-            border-color: var(--border-dark);
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: var(--primary-light);
-        }
-
-        .dark .card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary-dark);
-            background-color: rgba(30, 41, 59, 0.9);
+        .ui-card:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
         }
 
         .tab-content {
@@ -155,476 +78,351 @@
 
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.5s ease-out;
+            animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--brand-accent);
+            z-index: 1;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.5rem;
+            bottom: -2.5rem;
+            width: 2px;
+            background: #e5e5e5;
+        }
+
+        .dark .timeline-item::after {
+            background: #333333;
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
         }
 
         .filter-btn {
-            transition: all 0.2s ease;
-            border: 1px solid transparent;
-            background-color: transparent;
-            font-weight: 500;
-        }
-
-        .filter-btn:hover:not(.active) {
-            background-color: rgba(0, 0, 0, 0.05);
-            transform: translateY(-1px);
-        }
-
-        .dark .filter-btn:hover:not(.active) {
-            background-color: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
 
         .filter-btn.active {
-            background-color: var(--primary-light);
+            background-color: #1d1d1f;
             color: white;
-            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
-            transform: translateY(-1px);
         }
 
         .dark .filter-btn.active {
-            background-color: var(--primary-dark);
-            color: white;
-            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+            background-color: #ededed;
+            color: #171717;
         }
 
         .tab-btn {
-            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+            position: relative;
+            transition: color 0.3s ease;
+            white-space: nowrap; /* Prevent tabs from breaking lines */
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand-accent);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .tab-btn.active {
-            background-color: var(--primary-light);
-            color: white;
-            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
-            transform: translateY(-1px);
+            color: var(--brand-accent);
         }
 
-        .dark .tab-btn.active {
-            background-color: var(--primary-dark);
-            color: white;
-            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+        .tab-btn.active::after {
+            width: 100%;
         }
 
-        @keyframes blob {
-            0% {
-                transform: translate(0px, 0px) scale(1);
-            }
-
-            33% {
-                transform: translate(30px, -50px) scale(1.1);
-            }
-
-            66% {
-                transform: translate(-20px, 20px) scale(0.9);
-            }
-
-            100% {
-                transform: translate(0px, 0px) scale(1);
-            }
+        .skill-tag {
+            transition: transform 0.2s ease;
         }
 
-        .animate-blob {
-            animation: blob 7s infinite;
-        }
-
-        .animation-delay-2000 {
-            animation-delay: 2s;
-        }
-
-        .animation-delay-4000 {
-            animation-delay: 4s;
-        }
-
-        .theme-switch-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .dark .theme-switch-icon .sun {
-            transform: scale(0);
-        }
-
-        .light .theme-switch-icon .moon {
-            transform: scale(0);
-        }
-
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .slide-in-down {
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: slideInDown 0.5s ease-out forwards;
-        }
-
-        @keyframes slideInDown {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animated-card {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease-out forwards;
-        }
-
-        .social-icon {
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .social-icon:hover {
+        .skill-tag:hover {
             transform: scale(1.1);
         }
 
-        .stagger-1 {
-            animation-delay: 0.1s;
+        .hero-interactive {
+            transition: all 0.5s ease;
+        }
+        .hero-blob {
+            filter: blur(40px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        .hero-interactive:hover .hero-blob {
+            opacity: 0.4;
+        }
+        .hero-interactive:hover {
+            transform: scale(1.02);
         }
 
-        .stagger-2 {
-            animation-delay: 0.2s;
+        .code-snippet {
+            background: rgba(255, 255, 255, 0.8);
+            color: #1d1d1f;
+        }
+        .dark .code-snippet {
+            background: rgba(0, 0, 0, 0.4);
+            color: #ededed;
         }
 
-        .stagger-3 {
-            animation-delay: 0.3s;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 4px; /* Slim horizontal scrollbar for mobile tabs */
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e5e5;
+            border-radius: 10px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #333333;
         }
 
-        .stagger-4 {
-            animation-delay: 0.4s;
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/dev-rahul-arya/dev-rahul-arya/refs/heads/main/Untitled.ico">
-    <meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109' />
-    <meta name='google-adsense-platform-domain' content='blogspot.com' />
 </head>
 
-<body class="antialiased">
+<body class="bg-brand-bg text-brand-text dark:bg-brand-darkBg dark:text-brand-darkText antialiased">
 
-    <!-- Header -->
-    <header
-        class="fixed w-full top-0 z-50 transition-all duration-300 backdrop-blur-md bg-[#dce7ee]/70 dark:bg-slate-900/70 border-b border-gray-200 dark:border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-            <div class="flex items-center space-x-4 slide-in-down">
-                <h1
-                    class="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400">
-                    Rahul Arya</h1>
-            </div>
-            <nav class="flex items-center space-x-2 md:space-x-4">
-                <a href="https://github.com/dev-rahul-arya" target="_blank" rel="noopener noreferrer"
-                    class="social-icon p-2 rounded-full hover:bg-white/50 dark:hover:bg-white/10 transition-colors slide-in-down stagger-1"
-                    aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                        </path>
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/dev-rahul-arya" target="_blank" rel="noopener noreferrer"
-                    class="social-icon p-2 rounded-full hover:bg-white/50 dark:hover:bg-white/10 transition-colors slide-in-down stagger-2"
-                    aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-                <a href="https://x.com/kaun_rahul" target="_blank" rel="noopener noreferrer"
-                    class="social-icon p-2 rounded-full hover:bg-white/50 dark:hover:bg-white/10 transition-colors slide-in-down stagger-3"
-                    aria-label="X/Twitter">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 6 6 18M6 6l12 12" />
-                    </svg>
-                </a>
-                <button id="theme-toggle"
-                    class="p-2 ml-2 rounded-full bg-white/50 dark:bg-white/10 hover:bg-white/80 dark:hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-800 focus:ring-indigo-500 transition-all slide-in-down stagger-4">
-                    <div class="theme-switch-icon relative w-5 h-5">
-                        <svg class="sun absolute inset-0 w-5 h-5 text-amber-500" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                        <svg class="moon absolute inset-0 w-5 h-5 text-indigo-400" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-brand-darkBg/80 backdrop-blur-md border-b border-brand-border dark:border-brand-darkBorder">
+        <div class="w-[92%] md:w-[80%] mx-auto px-4 md:px-6 h-16 flex justify-between items-center">
+            <div class="font-bold text-xl tracking-tight truncate mr-4">Rahul Arya</div>
+            <div class="flex items-center space-x-2 md:space-x-4 shrink-0">
+                <div class="flex items-center space-x-1 md:space-x-2">
+                    <a href="https://github.com/dev-rahul-arya" target="_blank" class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary text-brand-muted dark:text-brand-darkMuted hover:text-brand-accent transition-all" aria-label="GitHub">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/dev-rahul-arya" target="_blank" class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary text-brand-muted dark:text-brand-darkMuted hover:text-brand-accent transition-all" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="https://x.com/kaun_rahul" target="_blank" class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary text-brand-muted dark:text-brand-darkMuted hover:text-brand-accent transition-all" aria-label="X">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+                <div class="h-6 w-px bg-brand-border dark:bg-brand-darkBorder mx-1 md:mx-2"></div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-colors">
+                    <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
                 </button>
-            </nav>
-        </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative">
-        <!-- Background Elements -->
-        <div
-            class="fixed top-20 left-0 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10 animate-blob">
-        </div>
-        <div
-            class="fixed top-20 right-0 w-72 h-72 bg-violet-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10 animate-blob animation-delay-2000">
-        </div>
-        <div
-            class="fixed -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10 animate-blob animation-delay-4000">
-        </div>
-
-        <!-- Intro Section -->
-        <section class="text-center mb-20 relative z-10">
-            <div
-                class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-emerald-100 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 mb-6 fade-in-up shadow-sm">
-                <span class="relative flex h-2.5 w-2.5">
-                    <span
-                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
-                </span>
-                <span
-                    class="text-emerald-800 dark:text-emerald-400 text-sm font-bold tracking-wide uppercase text-[12px]">Open
-                    for Freelance</span>
             </div>
+        </div>
+    </nav>
 
-            <h2
-                class="text-5xl md:text-7xl font-extrabold mb-6 fade-in-up tracking-tight text-gray-900 dark:text-white">
-                Building for <span
-                    class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Web</span>
-            </h2>
-            <p class="text-xl md:text-2xl max-w-2xl mx-auto text-black dark:text-gray-300 fade-in-up leading-relaxed font-medium"
-                style="animation-delay: 0.2s;">
-                Crafting immersive digital experiences with code and creativity.
-            </p>
-            <p class="mt-4 text-sm text-gray-500 dark:text-gray-500 fade-in-up" style="animation-delay: 0.3s;">
-                [Last Updated : December 2025]
-            </p>
-        </section>
-
-        <!-- Tabbed Section -->
-        <section class="fade-in-up relative z-10" style="animation-delay: 0.4s;">
-            <!-- Tab Buttons -->
-            <div id="tab-container" class="mb-12 flex flex-wrap justify-center gap-4">
-                <button
-                    class="tab-btn px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-600 hover:shadow-md active"
-                    data-tab="projects">Projects</button>
-                <button
-                    class="tab-btn px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-600 hover:shadow-md"
-                    data-tab="experience">Experience</button>
-                <button
-                    class="tab-btn px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-600 hover:shadow-md"
-                    data-tab="skills">Skills</button>
-                <button
-                    class="tab-btn px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-600 hover:shadow-md"
-                    data-tab="certificates">Certificates</button>
-                <button
-                    class="tab-btn px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-600 hover:shadow-md"
-                    data-tab="about">About Me</button>
-            </div>
-
-            <!-- Tab Content -->
-            <div id="tab-content-container">
-                <!-- Projects Content -->
-                <div id="projects" class="tab-content active">
-                    <div class="mb-12">
-                        <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
-                            <div id="filter-container" class="flex flex-wrap gap-2">
-                                <button class="filter-btn px-4 py-2 rounded-full active" data-filter="all">All</button>
-                                <button class="filter-btn px-4 py-2 rounded-full" data-filter="web">Web Dev</button>
-                                <button class="filter-btn px-4 py-2 rounded-full" data-filter="design">Design</button>
-                                <button class="filter-btn px-4 py-2 rounded-full" data-filter="mobile">Mobile</button>
-                            </div>
-                            <div class="relative w-full md:w-64">
-                                <input type="text" id="search-input" placeholder="Search projects..."
-                                    class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-200 dark:border-gray-600 bg-white/50 dark:bg-slate-800/50 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:outline-none backdrop-blur-sm text-gray-900 dark:text-gray-100">
-                                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 opacity-50 text-gray-500 dark:text-gray-400"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Project cards will be injected here by JavaScript -->
-                    </div>
-                    <p id="no-results" class="text-center text-xl mt-8 hidden text-gray-600 dark:text-gray-400">No
-                        projects found.</p>
+    <main class="w-[92%] md:max-w-[80%] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16 md:pb-24">
+        <!-- Hero Section -->
+        <section class="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-24">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder text-xs font-medium">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Open for FREELANCE/INTERN
                 </div>
-
-                <!-- Experience Content -->
-                <div id="experience" class="tab-content">
-                    <div id="experience-timeline" class="max-w-3xl mx-auto py-8">
-                        <!-- Timeline will be injected here by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Skills Content -->
-                <div id="skills" class="tab-content">
-                    <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Skills will be injected here by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Certificates Content -->
-                <div id="certificates" class="tab-content">
-                    <div id="certificate-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Certificate cards will be injected here by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- About Me Content -->
-                <div id="about" class="tab-content">
-                    <div
-                        class="max-w-4xl mx-auto text-lg text-center md:text-left space-y-8 flex flex-col md:flex-row items-center gap-12 py-8">
-                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQGZV-kusUHi9g/profile-displayphoto-scale_200_200/B4DZjqXyJLIEAY-/0/1756278762533?e=1766016000&v=beta&t=kBj_e4Pbhwl2DCy429uTzlaThiESrI1nf6uDAdNlWaE"
-                            alt="Rahul Arya"
-                            class="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover shadow-lg border-4 border-white dark:border-gray-700 flex-shrink-0">
-                        <div class="space-y-4">
-                            <h3
-                                class="text-3xl font-bold text-center md:text-left bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300">
-                                A Bit About Me</h3>
-                            <p class="opacity-90 leading-relaxed text-gray-800 dark:text-gray-300 font-medium">
-                                I'm a dedicated and ambitious first-year student pursuing a B.Tech in Computer Science &
-                                Engineering from G.B. Pant DSEU, alongside a B.S. in Data Science & Applications from
-                                IIT Madras. My academic journey is driven by a profound passion for technology and a
-                                desire to build digital experiences that are both functional and impactful.
-                            </p>
-                            <p class="opacity-90 leading-relaxed text-gray-800 dark:text-gray-300 font-medium">
-                                My fascination with coding began with the challenge of blending logic and creativity,
-                                and it has since grown into a continuous quest for knowledge. I thrive in collaborative
-                                environments and am always eager to connect with fellow tech enthusiasts, designers, and
-                                innovators. Let's build something amazing together!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Separator -->
-        <hr class="max-w-4xl mx-auto border-t border-gray-300 dark:border-gray-700 mt-16">
-
-        <!-- Contact Form Section -->
-        <section id="contact-section" class="py-24 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-5xl font-extrabold mb-4 fade-in-up text-gray-900 dark:text-white">Let's
-                    Connect</h2>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto text-gray-700 dark:text-gray-400 mb-12 fade-in-up font-medium"
-                    style="animation-delay: 0.2s;">
-                    Have a project in mind or just want to say hi? I'm always open to discussing new projects, creative
-                    ideas or
-                    opportunities to be part of your visions.
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-tight">BUILDING FOR A <span class="text-brand-accent">BETTER WEB</span></h1>
+                <p class="text-lg md:text-xl text-brand-muted dark:text-brand-darkMuted max-w-lg">
+                    Crafting immersive digital experiences with code and creativity.
                 </p>
-            </div>
-            <div class="max-w-5xl mx-auto card rounded-3xl p-8 md:p-12 fade-in-up border-0 shadow-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl"
-                style="animation-delay: 0.4s;">
-                <div class="grid md:grid-cols-2 gap-12 stretch">
-                    <!-- Image Column -->
-                    <div class="relative h-full min-h-[400px]">
-                        <img src="https://pbs.twimg.com/profile_images/1962489470777004032/jl2EWz8M_400x400.jpg"
-                            alt="profile picture"
-                            class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg">
+                <div class="flex flex-wrap items-center gap-4 text-xs text-brand-muted/60 dark:text-brand-darkMuted/40">
+                    <span>Last Updated: January 2026</span>
+                    <span class="hidden md:block w-1 h-1 rounded-full bg-brand-border"></span>
+                    <div class="flex gap-3 w-full md:w-auto mt-2 md:mt-0">
+                        <a href="https://leetcode.com/kaunrahul/" target="_blank" class="hover:text-brand-accent transition-colors">LeetCode</a>
+                        <a href="https://codeforces.com/profile/kaunrahul" target="_blank" class="hover:text-brand-accent transition-colors">CodeForces</a>
+                        <a href="https://www.codechef.com/users/kaunrahul" target="_blank" class="hover:text-brand-accent transition-colors">CodeChef</a>
                     </div>
-                    <!-- Form Column -->
-                    <div class="flex flex-col justify-center">
-                        <div class="mb-8 grid grid-cols-3 gap-4">
-                            <a href="https://linkedin.com/in/dev-rahul-arya" target="_blank"
-                                class="flex justify-center items-center p-4 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 transition-transform hover:scale-105 shadow-sm"
-                                aria-label="LinkedIn">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                </svg>
+                </div>
+            </div>
+            <div class="relative hidden md:flex justify-center items-center hero-interactive">
+                <div class="hero-blob absolute w-64 h-64 bg-brand-accent rounded-full animate-float"></div>
+                <div class="hero-blob absolute w-48 h-48 bg-indigo-400 rounded-full animate-float" style="animation-delay: -2s; left: 20%;"></div>
+                <div class="hero-blob absolute w-56 h-56 bg-purple-400 rounded-full animate-float" style="animation-delay: -4s; right: 10%;"></div>
+                <div class="relative z-10 p-8 ui-card backdrop-blur-xl border-white/20 code-snippet">
+                    <pre class="text-xs font-mono"><code><span class="text-brand-accent">const</span> rahul = {
+  role: <span class="text-indigo-500 dark:text-indigo-300">"Developer"</span>,
+  passion: <span class="text-indigo-500 dark:text-indigo-300">"Better Web"</span>,
+  status: <span class="text-indigo-500 dark:text-indigo-300">"Building..."</span>,
+  motto: <span class="text-indigo-500 dark:text-indigo-300">"Logic + Creativity"</span>
+};
+
+<span class="text-brand-accent">while</span>(learning) {
+  rahul.code();
+  rahul.improve();
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabs -->
+        <section class="mb-12">
+            <div id="tab-container" class="flex space-x-6 md:space-x-12 border-b border-brand-border dark:border-brand-darkBorder mb-12 overflow-x-auto pb-1 justify-start md:justify-center">
+                <button class="tab-btn pb-4 text-sm font-medium transition-all active" data-tab="projects">Projects</button>
+                <button class="tab-btn pb-4 text-sm font-medium transition-all" data-tab="experience">Experience</button>
+                <button class="tab-btn pb-4 text-sm font-medium transition-all" data-tab="skills">Skills</button>
+                <button class="tab-btn pb-4 text-sm font-medium transition-all" data-tab="certificates">Certificates</button>
+                <button class="tab-btn pb-4 text-sm font-medium transition-all" data-tab="about">About Me</button>
+            </div>
+
+            <div id="tab-content-container">
+                <!-- Projects -->
+                <div id="projects" class="tab-content active">
+                    <div class="flex flex-col md:flex-row gap-6 justify-between items-center mb-12">
+                        <div id="filter-container" class="flex gap-2 md:gap-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
+                            <button class="filter-btn px-4 md:px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all active whitespace-nowrap" data-filter="all">All</button>
+                            <button class="filter-btn px-4 md:px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all whitespace-nowrap" data-filter="web">Web Dev</button>
+                            <button class="filter-btn px-4 md:px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all whitespace-nowrap" data-filter="design">Design</button>
+                            <button class="filter-btn px-4 md:px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all whitespace-nowrap" data-filter="mobile">Mobile</button>
+                        </div>
+                        <div class="relative w-full md:w-64">
+                            <input type="text" id="search-input" placeholder="Search projects..." class="w-full pl-10 pr-4 py-2 rounded-full text-sm bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all">
+                            <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                    </div>
+                    <div id="project-grid" class="space-y-8">
+                        <!-- Projects injected here -->
+                    </div>
+                    <p id="no-results" class="text-center py-24 text-brand-muted hidden">No projects found.</p>
+                </div>
+
+                <!-- Experience -->
+                <div id="experience" class="tab-content">
+                    <div id="experience-timeline" class="max-w-3xl mx-auto py-4">
+                        <!-- Experience injected here -->
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div id="skills" class="tab-content">
+                    <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                        <!-- Skills injected here -->
+                    </div>
+                </div>
+
+                <!-- Certificates -->
+                <div id="certificates" class="tab-content">
+                    <div id="certificate-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Certificates injected here -->
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div id="about" class="tab-content">
+                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-start py-4 max-w-4xl mx-auto">
+                        <div class="relative shrink-0 mx-auto md:mx-0">
+                            <div class="absolute -inset-4 bg-brand-accent/10 rounded-3xl blur-2xl"></div>
+                            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGZV-kusUHi9g/profile-displayphoto-scale_200_200/B4DZjqXyJLIEAY-/0/1756278762533?e=1769040000&v=beta&t=rmp3H3ygrhP-TdGIjt-4d8AcDdZDLWRb82foI2aRXJE" alt="Rahul Arya" class="relative w-48 h-48 rounded-3xl object-cover border border-brand-border dark:border-brand-darkBorder shadow-xl">
+                        </div>
+                        <div class="space-y-6">
+                            <h3 class="text-2xl md:text-3xl font-bold">A Bit About Me</h3>
+                            <p class="text-base md:text-lg text-brand-muted dark:text-brand-darkMuted leading-relaxed">
+                                I'm a dedicated and ambitious first-year student pursuing a B.Tech in Computer Science & Engineering from G.B. Pant DSEU, alongside a B.S. in Data Science & Applications from IIT Madras. My academic journey is driven by a profound passion for technology and a desire to build digital experiences that are both functional and impactful.
+                            </p>
+                            <p class="text-base md:text-lg text-brand-muted dark:text-brand-darkMuted leading-relaxed">
+                                My fascination with coding began with the challenge of blending logic and creativity, and it has since grown into a continuous quest for knowledge. I thrive in collaborative environments and am always eager to connect with fellow tech enthusiasts, designers, and innovators. Let's build something amazing together!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact-section" class="pt-12 md:pt-24 border-t border-brand-border dark:border-brand-darkBorder">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Connect</h2>
+                    <p class="text-lg text-brand-muted dark:text-brand-darkMuted mb-8">
+                        Have a project in mind or just want to say hi? I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+                    </p>
+                    <div class="ui-card p-6 flex flex-col items-center space-y-6">
+                        <div class="flex items-center space-x-6 w-full">
+                            <img src="https://pbs.twimg.com/profile_images/1962489470777004032/jl2EWz8M_400x400.jpg" alt="Rahul Arya" class="w-20 h-20 rounded-2xl object-cover">
+                            <div>
+                                <p class="font-bold text-lg">Rahul Arya</p>
+                                <p class="text-sm text-brand-muted">1st Year @</p>
+                                <p class="text-sm text-brand-muted">GB Pant & IIT Madras</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 w-full justify-center pt-4 border-t border-brand-border dark:border-brand-darkBorder">
+                            <a href="https://linkedin.com/in/dev-rahul-arya" target="_blank" class="p-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary hover:text-brand-accent transition-colors" aria-label="LinkedIn">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             </a>
-                            <a href="https://x.com/kaun_rahul" target="_blank"
-                                class="flex justify-center items-center p-4 rounded-xl bg-gray-100 text-gray-900 dark:bg-white/10 dark:text-gray-200 transition-transform hover:scale-105 shadow-sm"
-                                aria-label="X (Twitter)">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                </svg>
+                            <a href="https://x.com/kaun_rahul" target="_blank" class="p-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary hover:text-brand-accent transition-colors" aria-label="X">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                             </a>
-                            <a href="https://discord.com/invite/99AqWTMy" target="_blank"
-                                class="flex justify-center items-center p-4 rounded-xl bg-indigo-50 text-indigo-600 dark:bg-indigo-900/20 dark:text-indigo-400 transition-transform hover:scale-105 shadow-sm"
-                                aria-label="Discord">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1892.3776-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1248.1023.2504.198.376.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.6982.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z" />
-                                </svg>
+                            <a href="https://discord.com/invite/99AqWTMy" target="_blank" class="p-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary hover:text-brand-accent transition-colors" aria-label="Discord">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1892.3776-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1248.1023.2504.198.376.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.6982.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"/></svg>
                             </a>
                         </div>
-
-                        <form id="contact-form" action="mailto:rahularya0221@outlook.com" method="POST"
-                            enctype="text/plain" class="space-y-6">
-                            <div>
-                                <label for="name"
-                                    class="block text-sm font-bold mb-2 text-gray-800 dark:text-gray-300">Name</label>
-                                <input type="text" id="name" name="name"
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-0 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-200 focus:ring-2 focus:ring-indigo-500 transition-all shadow-sm placeholder-gray-500"
-                                    placeholder="John Doe">
-                            </div>
-                            <div>
-                                <label for="email"
-                                    class="block text-sm font-bold mb-2 text-gray-800 dark:text-gray-300">Email
-                                    <span class="text-indigo-500">*</span></label>
-                                <input type="email" id="email" name="email" required
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-0 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-200 focus:ring-2 focus:ring-indigo-500 transition-all shadow-sm placeholder-gray-500"
-                                    placeholder="john@example.com">
-                            </div>
-                            <div>
-                                <label for="message"
-                                    class="block text-sm font-bold mb-2 text-gray-800 dark:text-gray-300">Message
-                                    <span class="text-indigo-500">*</span></label>
-                                <textarea id="message" name="message" rows="4" required
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-0 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-200 focus:ring-2 focus:ring-indigo-500 transition-all shadow-sm placeholder-gray-500"
-                                    placeholder="Tell me about your project..."></textarea>
-                            </div>
-                            <div>
-                                <button type="submit"
-                                    class="w-full px-8 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 transform hover:-translate-y-1 transition-all shadow-lg hover:shadow-indigo-500/30">
-                                    Send Message via Email
-                                </button>
-                            </div>
-                        </form>
-                        <div id="contact-status" class="mt-6 text-center"></div>
                     </div>
+                </div>
+                <div class="ui-card p-6 md:p-8">
+                    <form id="contact-form" action="mailto:rahularya0221@outlook.com" method="POST" enctype="text/plain" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-xs font-bold uppercase tracking-wider text-brand-muted dark:text-brand-darkMuted mb-2">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-bold uppercase tracking-wider text-brand-muted dark:text-brand-darkMuted mb-2">Email *</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-xs font-bold uppercase tracking-wider text-brand-muted dark:text-brand-darkMuted mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-xl bg-brand-accent text-white font-bold hover:opacity-90 transition-all shadow-lg shadow-brand-accent/20 transform hover:-translate-y-1">
+                            Send Message via Email
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="py-12 border-t border-gray-300 dark:border-gray-700 bg-[#dce7ee] dark:bg-gray-900 transition-colors">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">&copy; 2025 Rahul Arya. All Rights Reserved.
-            </p>
+    <footer class="w-[92%] md:max-w-[80%] mx-auto px-4 md:px-6 py-12 border-t border-brand-border dark:border-brand-darkBorder flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+        <p class="text-sm text-brand-muted dark:text-brand-darkMuted">&copy; 2026 Rahul Arya. All Rights Reserved.</p>
+        <div class="flex gap-6 text-xs font-medium text-brand-muted">
+            <a href="https://leetcode.com/kaunrahul/" target="_blank" class="hover:text-brand-accent transition-colors">LeetCode</a>
+            <a href="https://codeforces.com/profile/kaunrahul" target="_blank" class="hover:text-brand-accent transition-colors">CodeForces</a>
+            <a href="https://www.codechef.com/users/kaunrahul" target="_blank" class="hover:text-brand-accent transition-colors">CodeChef</a>
         </div>
     </footer>
 
@@ -721,7 +519,7 @@
                     role: 'Schooling',
                     company: 'Bhartiya Vidya Bhavan\'s Mehta Vidyalaya',
                     period: '2017 - 2025',
-                    description: 'Completed schooling with a focus on Science stream, achieving high academic performance and participating in extracurricular activities.'
+                    description: 'Completed schooling with a focus on Science stream, achieving practical academic knowledge and participating in extracurricular activities.'
                 },
             ];
 
@@ -756,39 +554,25 @@
 
                 filteredProjects.forEach((project, index) => {
                     const card = document.createElement('div');
-
-                    // Structure: Flex col ensures the card height behaves correctly
-                    card.className = 'animated-card card rounded-2xl overflow-hidden shadow-lg border-0 bg-white dark:bg-slate-800 flex flex-col';
-                    card.style.animationDelay = `${index * 100}ms`;
-
+                    card.className = 'ui-card overflow-hidden flex flex-col md:flex-row w-full';
                     card.innerHTML = `
-            <div class="relative h-48 overflow-hidden group shrink-0">
-                 <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-500 md:group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Error';">
-                 
-                 <div class="absolute inset-0 bg-black/50 flex items-center justify-center space-x-4 transition-opacity duration-300 opacity-100 md:opacity-0 md:group-hover:opacity-100">
-                    <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="p-2 bg-white rounded-full hover:scale-110 transition-transform text-gray-900" aria-label="GitHub Link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    </a>
-                    <a href="${project.live}" target="_blank" rel="noopener noreferrer" class="p-2 bg-white rounded-full hover:scale-110 transition-transform text-gray-900" aria-label="Live Demo">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                    </a>
-                 </div>
-            </div>
-            
-            <div class="p-6 flex flex-col flex-1">
-                <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">${project.title}</h3>
-                <p class="mb-4 text-sm leading-relaxed text-gray-700 dark:text-gray-400 font-medium">${project.description}</p>
-                
-                <div class="flex flex-wrap gap-2 mt-auto pt-2">
-                    ${(project.tags || []).map(tag => `
-                        <span class="text-xs font-bold px-2.5 py-1 rounded-full 
-                             bg-indigo-50 text-indigo-700 border border-indigo-100 
-                             dark:bg-indigo-900/30 dark:text-indigo-300 dark:border-indigo-800/50">
-                            ${tag}
-                        </span>
-                    `).join('')}
-                </div>
-            </div>`;
+                        <div class="md:w-1/3 h-56 md:h-auto overflow-hidden">
+                            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 md:p-8 md:w-2/3 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold">${project.title}</h3>
+                                <div class="flex gap-3">
+                                    <a href="${project.github}" target="_blank" class="text-brand-muted hover:text-brand-accent transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></a>
+                                    <a href="${project.live}" target="_blank" class="text-brand-muted hover:text-brand-accent transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+                                </div>
+                            </div>
+                            <p class="text-base text-brand-muted dark:text-brand-darkMuted mb-6 flex-grow leading-relaxed">${project.description}</p>
+                            <div class="flex flex-wrap gap-2">
+                                ${project.tags.map(tag => `<span class="px-3 py-1 rounded-md bg-brand-secondary dark:bg-brand-darkSecondary text-[10px] font-bold uppercase tracking-widest border border-brand-border dark:border-brand-darkBorder">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
                     projectGrid.appendChild(card);
                 });
             };
@@ -796,22 +580,21 @@
             const renderCertificates = () => {
                 if (!certificateGrid) return;
                 certificateGrid.innerHTML = '';
-                certificates.forEach((cert, index) => {
+                certificates.forEach(cert => {
                     const card = document.createElement('a');
                     card.href = cert.link;
                     card.target = '_blank';
-                    card.rel = 'noopener noreferrer';
-                    card.className = 'animated-card card rounded-2xl p-6 flex flex-col justify-between shadow-lg border-0 hover:border-indigo-500/30 transition-all bg-white dark:bg-slate-800';
-                    card.style.animationDelay = `${index * 100}ms`;
+                    card.className = 'ui-card p-6 hover:border-brand-accent/30 flex flex-col justify-between';
                     card.innerHTML = `
                         <div>
-                            <h4 class="text-lg font-bold mb-2 text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">${cert.title}</h4>
-                            <p class="text-sm mb-3 font-medium text-gray-600 dark:text-gray-400">${cert.issuer}</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <h4 class="font-bold text-base leading-tight pr-4">${cert.title}</h4>
+                                <svg class="w-4 h-4 text-brand-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </div>
+                            <p class="text-sm text-brand-muted mb-4">${cert.issuer}</p>
                         </div>
-                        <div class="flex justify-between items-center mt-4">
-                            <p class="text-xs font-semibold bg-gray-100 text-gray-700 dark:bg-slate-700/50 dark:text-gray-300 px-2 py-1 rounded-full">${cert.date}</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70 text-indigo-500"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                        </div>`;
+                        <span class="text-[10px] font-bold text-brand-accent uppercase tracking-widest">${cert.date}</span>
+                    `;
                     certificateGrid.appendChild(card);
                 });
             };
@@ -819,33 +602,32 @@
             const renderSkills = () => {
                 if (!skillsGrid) return;
                 skillsGrid.innerHTML = '';
-                skills.forEach((skillCategory, index) => {
-                    const categoryCard = document.createElement('div');
-                    categoryCard.className = 'animated-card card rounded-2xl p-6 shadow-lg border-0 bg-white dark:bg-slate-800';
-                    categoryCard.style.animationDelay = `${index * 100}ms`;
-                    categoryCard.innerHTML = `
-                        <h4 class="text-xl font-bold mb-6 text-center border-b border-gray-100 dark:border-white/5 pb-2 text-gray-900 dark:text-white">${skillCategory.category}</h4>
-                        <div class="flex flex-wrap gap-3 justify-center">
-                            ${skillCategory.items.map(item => `<span class="text-sm font-semibold bg-gray-50 dark:bg-slate-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600 hover:scale-105 transition-transform cursor-default">${item}</span>`).join('')}
-                        </div>`;
-                    skillsGrid.appendChild(categoryCard);
+                skills.forEach(skillCategory => {
+                    const div = document.createElement('div');
+                    div.className = 'space-y-6';
+                    div.innerHTML = `
+                        <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-brand-muted border-b border-brand-border dark:border-brand-darkBorder pb-2">${skillCategory.category}</h4>
+                        <div class="flex flex-wrap gap-3">
+                            ${skillCategory.items.map(item => `<span class="skill-tag px-4 md:px-5 py-2.5 rounded-2xl bg-white dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder text-sm font-medium shadow-sm cursor-default">${item}</span>`).join('')}
+                        </div>
+                    `;
+                    skillsGrid.appendChild(div);
                 });
             };
 
             const renderExperience = () => {
                 if (!experienceTimeline) return;
                 experienceTimeline.innerHTML = '';
-                experiences.forEach((exp, index) => {
-                    const item = document.createElement('div');
-                    item.className = 'timeline-item fade-in-up';
-                    item.style.animationDelay = `${index * 100 + 200}ms`;
-                    item.innerHTML = `
-                        <span class="text-sm font-bold text-indigo-600 dark:text-indigo-400 mb-1 block">${exp.period}</span>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">${exp.role}</h3>
-                        <p class="text-base font-semibold text-gray-700 dark:text-gray-300 mb-2">${exp.company}</p>
-                        <p class="text-gray-700 dark:text-gray-400 leading-relaxed font-medium">${exp.description}</p>
+                experiences.forEach(exp => {
+                    const div = document.createElement('div');
+                    div.className = 'timeline-item';
+                    div.innerHTML = `
+                        <span class="text-xs font-bold text-brand-accent uppercase tracking-widest mb-1 block">${exp.period}</span>
+                        <h3 class="text-xl font-bold">${exp.role}</h3>
+                        <p class="text-base font-medium text-brand-muted mb-3">${exp.company}</p>
+                        <p class="text-brand-muted dark:text-brand-darkMuted leading-relaxed">${exp.description}</p>
                     `;
-                    experienceTimeline.appendChild(item);
+                    experienceTimeline.appendChild(div);
                 });
             };
 
@@ -862,30 +644,28 @@
                     htmlElement.classList.add('dark');
                     htmlElement.classList.remove('light');
                 } else {
-                    htmlElement.classList.add('light'); // This adds the class 'light' to html
+                    htmlElement.classList.add('light');
                     htmlElement.classList.remove('dark');
                 }
             };
 
             // --- EVENT LISTENERS ---
             if (searchInput) searchInput.addEventListener('input', e => { currentSearchTerm = e.target.value.toLowerCase(); renderProjects(); });
-            if (filterContainer) filterContainer.addEventListener('click', e => { if (e.target.classList.contains('filter-btn')) { filterContainer.querySelector('.filter-btn.active').classList.remove('active'); e.target.classList.add('active'); currentFilter = e.target.dataset.filter; renderProjects(); } });
+            if (filterContainer) filterContainer.addEventListener('click', e => { 
+                if (e.target.classList.contains('filter-btn')) { 
+                    filterContainer.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active'); 
+                    currentFilter = e.target.dataset.filter; 
+                    renderProjects(); 
+                } 
+            });
 
             if (tabContainer) tabContainer.addEventListener('click', e => {
                 if (e.target.classList.contains('tab-btn')) {
                     const targetTab = e.target.dataset.tab;
-
-                    // Reset all buttons
-                    tabContainer.querySelectorAll('.tab-btn').forEach(btn => {
-                        btn.classList.remove('active', 'bg-indigo-600', 'text-white', 'shadow-md');
-                        // Use default styles which are handled by CSS/classes
-                    });
-
-                    // Set active button
-                    e.target.classList.add('active', 'bg-indigo-600', 'text-white', 'shadow-md');
-
-                    // Switch Content
-                    tabContentContainer.querySelector('.tab-content.active').classList.remove('active');
+                    tabContainer.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    tabContentContainer.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
                     document.getElementById(targetTab).classList.add('active');
                 }
             });
@@ -898,14 +678,7 @@
             renderCertificates();
             renderSkills();
             renderExperience();
-
-            // Set initial active tab state manually to match the new style
-            const activeBtn = tabContainer.querySelector('.tab-btn.active');
-            if (activeBtn) {
-                activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
-            }
         });
     </script>
 </body>
-
 </html>
