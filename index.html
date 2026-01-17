@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,8 +83,15 @@
         }
 
         @keyframes slideUpFade {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .timeline-item {
@@ -131,15 +139,24 @@
             color: white;
         }
 
+        .filter-btn.active:hover {
+            background-color: #333333;
+            color: white;
+        }
+
         .dark .filter-btn.active {
             background-color: #ededed;
+            color: #171717;
+        }
+
+        .dark .filter-btn.active:hover {
+            background-color: #ffffff;
             color: #171717;
         }
 
         .tab-btn {
             position: relative;
             transition: color 0.3s ease;
-            white-space: nowrap; /* Prevent tabs from breaking lines */
         }
 
         .tab-btn::after {
@@ -172,14 +189,17 @@
         .hero-interactive {
             transition: all 0.5s ease;
         }
+
         .hero-blob {
             filter: blur(40px);
             opacity: 0;
             transition: all 0.8s ease;
         }
+
         .hero-interactive:hover .hero-blob {
             opacity: 0.4;
         }
+
         .hero-interactive:hover {
             transform: scale(1.02);
         }
@@ -188,23 +208,25 @@
             background: rgba(255, 255, 255, 0.8);
             color: #1d1d1f;
         }
+
         .dark .code-snippet {
             background: rgba(0, 0, 0, 0.4);
             color: #ededed;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
-            height: 4px; /* Slim horizontal scrollbar for mobile tabs */
         }
+
         ::-webkit-scrollbar-track {
             background: transparent;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #e5e5e5;
             border-radius: 10px;
         }
+
         .dark ::-webkit-scrollbar-thumb {
             background: #333333;
         }
@@ -212,71 +234,118 @@
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
     </style>
-    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/dev-rahul-arya/dev-rahul-arya/refs/heads/main/Untitled.ico">
+    <link rel="icon" type="image/x-icon" href="Untitled.ico">
 </head>
 
 <body class="bg-brand-bg text-brand-text dark:bg-brand-darkBg dark:text-brand-darkText antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-brand-darkBg/80 backdrop-blur-md border-b border-brand-border dark:border-brand-darkBorder">
-        <div class="w-[92%] md:w-[80%] mx-auto px-4 md:px-6 h-16 flex justify-between items-center">
-            <div class="font-bold text-xl tracking-tight truncate mr-4">Rahul Arya</div>
-            <div class="flex items-center space-x-2 md:space-x-4 shrink-0">
-                <div class="flex items-center space-x-1 md:space-x-2">
-                    <a href="https://github.com/dev-rahul-arya" target="_blank" class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary text-brand-muted dark:text-brand-darkMuted hover:text-brand-accent transition-all" aria-label="GitHub">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+    <nav
+        class="fixed top-0 w-full z-50 bg-white/80 dark:bg-brand-darkBg/80 backdrop-blur-md border-b border-brand-border dark:border-brand-darkBorder">
+        <div class="w-[92%] md:max-w-[80%] mx-auto px-4 md:px-6 h-16 flex justify-between items-center">
+            <div class="font-bold text-xl tracking-tight">Rahul Arya</div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <a href="https://github.com/dev-rahul-arya" target="_blank"
+                        class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary text-brand-muted dark:text-brand-darkMuted hover:text-brand-accent transition-all"
+                        aria-label="GitHub">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
                     </a>
-                    <a href="https://linkedin.com/in/dev-rahul-arya" target="_blank" class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary text-brand-muted dark:text-brand-darkMuted hover:text-brand-accent transition-all" aria-label="LinkedIn">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    <a href="https://linkedin.com/in/dev-rahul-arya" target="_blank"
+                        class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary text-brand-muted dark:text-brand-darkMuted hover:text-brand-accent transition-all"
+                        aria-label="LinkedIn">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
                     </a>
-                    <a href="https://x.com/kaun_rahul" target="_blank" class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary text-brand-muted dark:text-brand-darkMuted hover:text-brand-accent transition-all" aria-label="X">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    <a href="https://x.com/kaun_rahul" target="_blank"
+                        class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary text-brand-muted dark:text-brand-darkMuted hover:text-brand-accent transition-all"
+                        aria-label="X">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
                     </a>
                 </div>
-                <div class="h-6 w-px bg-brand-border dark:bg-brand-darkBorder mx-1 md:mx-2"></div>
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-colors">
-                    <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                    <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+                <div class="h-6 w-px bg-brand-border dark:bg-brand-darkBorder mx-2"></div>
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-colors">
+                    <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                        </path>
+                    </svg>
+                    <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
                 </button>
             </div>
         </div>
     </nav>
 
-    <main class="w-[92%] md:max-w-[80%] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16 md:pb-24">
+    <main class="w-[92%] md:max-w-[80%] mx-auto px-4 md:px-6 pt-32 pb-24">
         <!-- Hero Section -->
-        <section class="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-24">
+        <section class="grid md:grid-cols-2 gap-12 items-center mb-24">
             <div class="space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder text-xs font-medium">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder text-xs font-medium">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    Open for FREELANCE/INTERN
+                    Open for FREELANCE / INTERN
                 </div>
-                <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-tight">BUILDING FOR A <span class="text-brand-accent">BETTER WEB</span></h1>
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-tight">BUILDING FOR A <span
+                        class="text-brand-accent">BETTER WEB</span></h1>
                 <p class="text-lg md:text-xl text-brand-muted dark:text-brand-darkMuted max-w-lg">
                     Crafting immersive digital experiences with code and creativity.
                 </p>
-                <div class="flex flex-wrap items-center gap-4 text-xs text-brand-muted/60 dark:text-brand-darkMuted/40">
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="#contact-section"
+                        class="px-6 py-3 rounded-xl bg-brand-accent text-white font-bold hover:opacity-90 transition-all shadow-lg shadow-brand-accent/20">Get
+                        in Touch</a>
+                    <a href="resume.pdf" target="_blank"
+                        class="px-6 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder font-bold hover:bg-brand-border dark:hover:bg-brand-darkBorder transition-all flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        Resume
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4 text-xs text-brand-muted/60 dark:text-brand-darkMuted/40">
                     <span>Last Updated: January 2026</span>
-                    <span class="hidden md:block w-1 h-1 rounded-full bg-brand-border"></span>
-                    <div class="flex gap-3 w-full md:w-auto mt-2 md:mt-0">
-                        <a href="https://leetcode.com/kaunrahul/" target="_blank" class="hover:text-brand-accent transition-colors">LeetCode</a>
-                        <a href="https://codeforces.com/profile/kaunrahul" target="_blank" class="hover:text-brand-accent transition-colors">CodeForces</a>
-                        <a href="https://www.codechef.com/users/kaunrahul" target="_blank" class="hover:text-brand-accent transition-colors">CodeChef</a>
+                    <span class="w-1 h-1 rounded-full bg-brand-border"></span>
+                    <div class="flex gap-3">
+                        <a href="https://leetcode.com/kaunrahul/" target="_blank"
+                            class="hover:text-brand-accent transition-colors">LeetCode</a>
+                        <a href="https://codeforces.com/profile/kaunrahul" target="_blank"
+                            class="hover:text-brand-accent transition-colors">CodeForces</a>
+                        <a href="https://www.codechef.com/users/kaunrahul" target="_blank"
+                            class="hover:text-brand-accent transition-colors">CodeChef</a>
                     </div>
                 </div>
             </div>
             <div class="relative hidden md:flex justify-center items-center hero-interactive">
                 <div class="hero-blob absolute w-64 h-64 bg-brand-accent rounded-full animate-float"></div>
-                <div class="hero-blob absolute w-48 h-48 bg-indigo-400 rounded-full animate-float" style="animation-delay: -2s; left: 20%;"></div>
-                <div class="hero-blob absolute w-56 h-56 bg-purple-400 rounded-full animate-float" style="animation-delay: -4s; right: 10%;"></div>
+                <div class="hero-blob absolute w-48 h-48 bg-indigo-400 rounded-full animate-float"
+                    style="animation-delay: -2s; left: 20%;"></div>
+                <div class="hero-blob absolute w-56 h-56 bg-purple-400 rounded-full animate-float"
+                    style="animation-delay: -4s; right: 10%;"></div>
                 <div class="relative z-10 p-8 ui-card backdrop-blur-xl border-white/20 code-snippet">
                     <pre class="text-xs font-mono"><code><span class="text-brand-accent">const</span> rahul = {
   role: <span class="text-indigo-500 dark:text-indigo-300">"Developer"</span>,
-  passion: <span class="text-indigo-500 dark:text-indigo-300">"Building Better Web"</span>,
+  passion: <span class="text-indigo-500 dark:text-indigo-300">"Better Web"</span>,
   status: <span class="text-indigo-500 dark:text-indigo-300">"Building..."</span>,
   motto: <span class="text-indigo-500 dark:text-indigo-300">"Logic + Creativity"</span>
 };
@@ -291,33 +360,50 @@
 
         <!-- Tabs -->
         <section class="mb-12">
-            <div id="tab-container" class="flex space-x-6 md:space-x-12 border-b border-brand-border dark:border-brand-darkBorder mb-12 overflow-x-auto pb-1 justify-start md:justify-center">
-                <button class="tab-btn pb-4 text-sm font-medium transition-all active" data-tab="projects">Projects</button>
-                <button class="tab-btn pb-4 text-sm font-medium transition-all" data-tab="experience">Experience</button>
-                <button class="tab-btn pb-4 text-sm font-medium transition-all" data-tab="skills">Skills</button>
-                <button class="tab-btn pb-4 text-sm font-medium transition-all" data-tab="certificates">Certificates</button>
-                <button class="tab-btn pb-4 text-sm font-medium transition-all" data-tab="about">About Me</button>
+            <div id="tab-container"
+                class="flex space-x-6 md:space-x-12 border-b border-brand-border dark:border-brand-darkBorder mb-12 overflow-x-auto no-scrollbar justify-start md:justify-center">
+                <button class="tab-btn pb-4 text-sm font-medium transition-all active whitespace-nowrap"
+                    data-tab="projects">Projects</button>
+                <button class="tab-btn pb-4 text-sm font-medium transition-all whitespace-nowrap"
+                    data-tab="experience">Experience</button>
+                <button class="tab-btn pb-4 text-sm font-medium transition-all whitespace-nowrap"
+                    data-tab="skills">Skills</button>
+                <button class="tab-btn pb-4 text-sm font-medium transition-all whitespace-nowrap"
+                    data-tab="certificates">Certificates</button>
+                <button class="tab-btn pb-4 text-sm font-medium transition-all whitespace-nowrap" data-tab="about">About
+                    Me</button>
             </div>
 
             <div id="tab-content-container">
                 <!-- Projects -->
                 <div id="projects" class="tab-content active">
                     <div class="flex flex-col md:flex-row gap-6 justify-between items-center mb-12">
-                        <div id="filter-container" class="flex gap-2 md:gap-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
-                            <button class="filter-btn px-4 md:px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all active whitespace-nowrap" data-filter="all">All</button>
-                            <button class="filter-btn px-4 md:px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all whitespace-nowrap" data-filter="web">Web Dev</button>
-                            <button class="filter-btn px-4 md:px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all whitespace-nowrap" data-filter="design">Design</button>
-                            <button class="filter-btn px-4 md:px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all whitespace-nowrap" data-filter="mobile">Mobile</button>
+                        <div id="filter-container" class="flex gap-3 overflow-x-auto no-scrollbar w-full md:w-auto">
+                            <button
+                                class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all active"
+                                data-filter="all">All</button>
+                            <button
+                                class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all"
+                                data-filter="web">Web Dev</button>
+                            <button
+                                class="filter-btn px-6 py-2 rounded-full text-sm font-medium border border-brand-border dark:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all"
+                                data-filter="design">Design</button>
                         </div>
                         <div class="relative w-full md:w-64">
-                            <input type="text" id="search-input" placeholder="Search projects..." class="w-full pl-10 pr-4 py-2 rounded-full text-sm bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all">
-                            <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            <input type="text" id="search-input" placeholder="Search projects..."
+                                class="w-full pl-10 pr-4 py-2 rounded-full text-sm bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all">
+                            <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
                         </div>
                     </div>
                     <div id="project-grid" class="space-y-8">
                         <!-- Projects injected here -->
                     </div>
-                    <p id="no-results" class="text-center py-24 text-brand-muted hidden">No projects found.</p>
+                    <p id="no-results" class="text-center py-24 text-brand-muted hidden">No projects found matching your
+                        criteria.</p>
                 </div>
 
                 <!-- Experience -->
@@ -329,7 +415,7 @@
 
                 <!-- Skills -->
                 <div id="skills" class="tab-content">
-                    <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <!-- Skills injected here -->
                     </div>
                 </div>
@@ -343,18 +429,26 @@
 
                 <!-- About -->
                 <div id="about" class="tab-content">
-                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-start py-4 max-w-4xl mx-auto">
+                    <div class="flex flex-col md:flex-row gap-12 items-start py-4 max-w-4xl mx-auto">
                         <div class="relative shrink-0 mx-auto md:mx-0">
                             <div class="absolute -inset-4 bg-brand-accent/10 rounded-3xl blur-2xl"></div>
-                            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGZV-kusUHi9g/profile-displayphoto-scale_200_200/B4DZjqXyJLIEAY-/0/1756278762533?e=1769040000&v=beta&t=rmp3H3ygrhP-TdGIjt-4d8AcDdZDLWRb82foI2aRXJE" alt="Rahul Arya" class="relative w-48 h-48 rounded-3xl object-cover border border-brand-border dark:border-brand-darkBorder shadow-xl">
+                            <img src="image-li.png"
+                                alt="Rahul Arya"
+                                class="relative w-48 h-48 rounded-3xl object-cover border border-brand-border dark:border-brand-darkBorder shadow-xl">
                         </div>
-                        <div class="space-y-6">
-                            <h3 class="text-2xl md:text-3xl font-bold">A Bit About Me</h3>
-                            <p class="text-base md:text-lg text-brand-muted dark:text-brand-darkMuted leading-relaxed">
-                                I'm a dedicated and ambitious first-year student pursuing a B.Tech in Computer Science & Engineering from G.B. Pant DSEU, alongside a B.S. in Data Science & Applications from IIT Madras. My academic journey is driven by a profound passion for technology and a desire to build digital experiences that are both functional and impactful.
+                        <div class="space-y-6 text-center md:text-left">
+                            <h3 class="text-3xl font-bold">A Bit About Me</h3>
+                            <p class="text-lg text-brand-muted dark:text-brand-darkMuted leading-relaxed">
+                                I'm a dedicated and ambitious first-year student pursuing a B.Tech in Computer Science & 
+                                Engineering from G.B. Pant Engineering College, alongside a B.S. degree in Data Science & Applications from
+                                IIT Madras. My academic journey is driven by a profound passion for technology and a
+                                desire to build digital experiences that are both functional and impactful.
                             </p>
-                            <p class="text-base md:text-lg text-brand-muted dark:text-brand-darkMuted leading-relaxed">
-                                My fascination with coding began with the challenge of blending logic and creativity, and it has since grown into a continuous quest for knowledge. I thrive in collaborative environments and am always eager to connect with fellow tech enthusiasts, designers, and innovators. Let's build something amazing together!
+                            <p class="text-lg text-brand-muted dark:text-brand-darkMuted leading-relaxed">
+                                My fascination with coding began with the challenge of blending logic and creativity,
+                                and it has since grown into a continuous quest for knowledge. I thrive in collaborative
+                                environments and am always eager to connect with fellow tech enthusiasts, designers, and
+                                innovators. Let's build something amazing together!
                             </p>
                         </div>
                     </div>
@@ -363,53 +457,93 @@
         </section>
 
         <!-- Contact -->
-        <section id="contact-section" class="pt-12 md:pt-24 border-t border-brand-border dark:border-brand-darkBorder">
-            <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <section id="contact-section" class="pt-24 border-t border-brand-border dark:border-brand-darkBorder">
+            <div class="grid md:grid-cols-2 gap-16 items-start">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Connect</h2>
+                    <h2 class="text-4xl font-bold mb-6">Let's Connect</h2>
                     <p class="text-lg text-brand-muted dark:text-brand-darkMuted mb-8">
-                        Have a project in mind or just want to say hi? I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+                        Have a project in mind or just want to say hi? I'm always open to discussing new projects,
+                        creative ideas or opportunities to be part of your visions.
                     </p>
                     <div class="ui-card p-6 flex flex-col items-center space-y-6">
                         <div class="flex items-center space-x-6 w-full">
-                            <img src="https://pbs.twimg.com/profile_images/1962489470777004032/jl2EWz8M_400x400.jpg" alt="Rahul Arya" class="w-20 h-20 rounded-2xl object-cover">
+                            <img src="image-x.png"
+                                alt="Rahul Arya" class="w-20 h-20 rounded-2xl object-cover">
                             <div>
                                 <p class="font-bold text-lg">Rahul Arya</p>
-                                <p class="text-sm text-brand-muted">1st Year @</p>
-                                <p class="text-sm text-brand-muted">GB Pant & IIT Madras</p>
+                                <p class="text-sm text-brand-muted">Building for a Better Web</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 w-full justify-center pt-4 border-t border-brand-border dark:border-brand-darkBorder">
-                            <a href="https://linkedin.com/in/dev-rahul-arya" target="_blank" class="p-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary hover:text-brand-accent transition-colors" aria-label="LinkedIn">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <div
+                            class="flex gap-4 w-full justify-center pt-4 border-t border-brand-border dark:border-brand-darkBorder">
+                            <a href="https://discord.com/invite/99AqWTMy" target="_blank"
+                                class="p-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary hover:text-brand-accent transition-colors"
+                                aria-label="Discord">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1892.3776-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1248.1023.2504.198.376.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.6982.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z" />
+                                </svg>
                             </a>
-                            <a href="https://x.com/kaun_rahul" target="_blank" class="p-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary hover:text-brand-accent transition-colors" aria-label="X">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            <a href="https://x.com/kaun_rahul" target="_blank"
+                                class="p-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary hover:text-brand-accent transition-colors"
+                                aria-label="X">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
                             </a>
-                            <a href="https://discord.com/invite/99AqWTMy" target="_blank" class="p-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary hover:text-brand-accent transition-colors" aria-label="Discord">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1892.3776-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1248.1023.2504.198.376.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.6982.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"/></svg>
+                            <a href="https://linkedin.com/in/dev-rahul-arya" target="_blank"
+                                class="p-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary hover:text-brand-accent transition-colors"
+                                aria-label="LinkedIn">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="ui-card p-6 md:p-8">
-                    <form id="contact-form" action="mailto:rahularya0221@outlook.com" method="POST" enctype="text/plain" class="space-y-6">
+                <div class="ui-card p-8">
+                    <form id="contact-form" action="mailto:rahularya0221@outlook.com" method="POST" enctype="text/plain"
+                        class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label for="name" class="block text-xs font-bold uppercase tracking-wider text-brand-muted dark:text-brand-darkMuted mb-2">Name</label>
-                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all" placeholder="John Doe">
+                                <label for="name"
+                                    class="block text-xs font-bold uppercase tracking-wider text-brand-muted dark:text-brand-darkMuted mb-2">Name
+                                    *</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
+                                    placeholder="John Doe">
                             </div>
                             <div>
-                                <label for="email" class="block text-xs font-bold uppercase tracking-wider text-brand-muted dark:text-brand-darkMuted mb-2">Email *</label>
-                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all" placeholder="john@example.com">
+                                <label for="email"
+                                    class="block text-xs font-bold uppercase tracking-wider text-brand-muted dark:text-brand-darkMuted mb-2">Email
+                                    *</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full px-4 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
+                                    placeholder="john@example.com">
                             </div>
                         </div>
                         <div>
-                            <label for="message" class="block text-xs font-bold uppercase tracking-wider text-brand-muted dark:text-brand-darkMuted mb-2">Message *</label>
-                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all" placeholder="Tell me about your project..."></textarea>
+                            <label for="message"
+                                class="block text-xs font-bold uppercase tracking-wider text-brand-muted dark:text-brand-darkMuted mb-2">Message
+                                *</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="w-full px-4 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
+                                placeholder="Tell me about your project..."></textarea>
                         </div>
-                        <button type="submit" class="w-full py-4 rounded-xl bg-brand-accent text-white font-bold hover:opacity-90 transition-all shadow-lg shadow-brand-accent/20 transform hover:-translate-y-1">
+                        <button type="submit"
+                            class="w-full py-4 rounded-xl bg-brand-accent text-white font-bold hover:opacity-90 transition-all shadow-lg shadow-brand-accent/20 transform hover:-translate-y-1 flex items-center justify-center gap-2">
                             Send Message via Email
+                            <!-- <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-send" aria-hidden="true">
+                                <path
+                                    d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z">
+                                </path>
+                                <path d="m21.854 2.147-10.94 10.939"></path>
+                            </svg>
                         </button>
                     </form>
                 </div>
@@ -417,12 +551,16 @@
         </section>
     </main>
 
-    <footer class="w-[92%] md:max-w-[80%] mx-auto px-4 md:px-6 py-12 border-t border-brand-border dark:border-brand-darkBorder flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+    <footer
+        class="w-[92%] md:max-w-[80%] mx-auto px-4 md:px-6 py-12 border-t border-brand-border dark:border-brand-darkBorder flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
         <p class="text-sm text-brand-muted dark:text-brand-darkMuted">&copy; 2026 Rahul Arya. All Rights Reserved.</p>
         <div class="flex gap-6 text-xs font-medium text-brand-muted">
-            <a href="https://leetcode.com/kaunrahul/" target="_blank" class="hover:text-brand-accent transition-colors">LeetCode</a>
-            <a href="https://codeforces.com/profile/kaunrahul" target="_blank" class="hover:text-brand-accent transition-colors">CodeForces</a>
-            <a href="https://www.codechef.com/users/kaunrahul" target="_blank" class="hover:text-brand-accent transition-colors">CodeChef</a>
+            <a href="https://leetcode.com/kaunrahul/" target="_blank"
+                class="hover:text-brand-accent transition-colors">LeetCode</a>
+            <a href="https://codeforces.com/profile/kaunrahul" target="_blank"
+                class="hover:text-brand-accent transition-colors">CodeForces</a>
+            <a href="https://www.codechef.com/users/kaunrahul" target="_blank"
+                class="hover:text-brand-accent transition-colors">CodeChef</a>
         </div>
     </footer>
 
@@ -501,24 +639,35 @@
                     role: 'Freelance Web Developer',
                     company: 'Self-Employed',
                     period: '2022 - Present',
+                    type: 'Job',
                     description: 'Building modern and responsive websites for clients. Specializing in landing pages and portfolio sites using HTML, CSS, and JavaScript.'
+                },
+                {
+                    role: 'AI Intern',
+                    company: 'Mirai School Of Technology',
+                    period: 'Jan 2026 - Feb 2026',
+                    type: 'Internship',
+                    description: 'Gained hands on experience on cutting edge AI tools and automations like n8n.'
                 },
                 {
                     role: 'Computer Science Student',
                     company: 'G.B. Pant DSEU Okhla-1 Campus',
                     period: '2025 - Present',
+                    type: 'Education',
                     description: 'Pursuing B.Tech in Computer Science & Engineering. Active member of Samidha, GDGoC and COPs.'
                 },
                 {
                     role: 'Data Science Student',
                     company: 'IIT Madras',
                     period: '2025 - Present',
+                    type: 'Education',
                     description: 'Pursuing B.S. in Data Science & Applications. Engaged in various data science projects and hackathons.'
                 },
                 {
                     role: 'Schooling',
                     company: 'Bhartiya Vidya Bhavan\'s Mehta Vidyalaya',
                     period: '2017 - 2025',
+                    type: 'Education',
                     description: 'Completed schooling with a focus on Science stream, achieving practical academic knowledge and participating in extracurricular activities.'
                 },
             ];
@@ -556,18 +705,18 @@
                     const card = document.createElement('div');
                     card.className = 'ui-card overflow-hidden flex flex-col md:flex-row w-full';
                     card.innerHTML = `
-                        <div class="md:w-1/3 h-56 md:h-auto overflow-hidden">
+                        <div class="md:w-1/3 h-64 md:h-auto overflow-hidden">
                             <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
                         </div>
                         <div class="p-6 md:p-8 md:w-2/3 flex flex-col">
                             <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-2xl font-bold">${project.title}</h3>
+                                <h3 class="text-xl md:text-2xl font-bold">${project.title}</h3>
                                 <div class="flex gap-3">
                                     <a href="${project.github}" target="_blank" class="text-brand-muted hover:text-brand-accent transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></a>
                                     <a href="${project.live}" target="_blank" class="text-brand-muted hover:text-brand-accent transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
                                 </div>
                             </div>
-                            <p class="text-base text-brand-muted dark:text-brand-darkMuted mb-6 flex-grow leading-relaxed">${project.description}</p>
+                            <p class="text-sm md:text-base text-brand-muted dark:text-brand-darkMuted mb-6 flex-grow leading-relaxed">${project.description}</p>
                             <div class="flex flex-wrap gap-2">
                                 ${project.tags.map(tag => `<span class="px-3 py-1 rounded-md bg-brand-secondary dark:bg-brand-darkSecondary text-[10px] font-bold uppercase tracking-widest border border-brand-border dark:border-brand-darkBorder">${tag}</span>`).join('')}
                             </div>
@@ -622,7 +771,10 @@
                     const div = document.createElement('div');
                     div.className = 'timeline-item';
                     div.innerHTML = `
-                        <span class="text-xs font-bold text-brand-accent uppercase tracking-widest mb-1 block">${exp.period}</span>
+                        <div class="flex flex-wrap items-center gap-3 mb-1">
+                            <span class="text-xs font-bold text-brand-accent uppercase tracking-widest">${exp.period}</span>
+                            <span class="px-2 py-0.5 rounded-full bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder text-[10px] font-bold uppercase tracking-wider text-brand-muted dark:text-brand-darkMuted">${exp.type}</span>
+                        </div>
                         <h3 class="text-xl font-bold">${exp.role}</h3>
                         <p class="text-base font-medium text-brand-muted mb-3">${exp.company}</p>
                         <p class="text-brand-muted dark:text-brand-darkMuted leading-relaxed">${exp.description}</p>
@@ -651,13 +803,13 @@
 
             // --- EVENT LISTENERS ---
             if (searchInput) searchInput.addEventListener('input', e => { currentSearchTerm = e.target.value.toLowerCase(); renderProjects(); });
-            if (filterContainer) filterContainer.addEventListener('click', e => { 
-                if (e.target.classList.contains('filter-btn')) { 
+            if (filterContainer) filterContainer.addEventListener('click', e => {
+                if (e.target.classList.contains('filter-btn')) {
                     filterContainer.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                    e.target.classList.add('active'); 
-                    currentFilter = e.target.dataset.filter; 
-                    renderProjects(); 
-                } 
+                    e.target.classList.add('active');
+                    currentFilter = e.target.dataset.filter;
+                    renderProjects();
+                }
             });
 
             if (tabContainer) tabContainer.addEventListener('click', e => {
@@ -681,4 +833,5 @@
         });
     </script>
 </body>
+
 </html>
