@@ -154,6 +154,87 @@
             color: #171717;
         }
 
+        .custom-dropdown-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.65rem 1.25rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: white;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            min-width: 190px;
+            justify-content: space-between;
+        }
+
+        .dark .custom-dropdown-btn {
+            background: #212121;
+            border-color: #333333;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-dropdown-btn:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .custom-dropdown-btn svg.chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .custom-dropdown.open .custom-dropdown-btn svg.chevron {
+            transform: rotate(180deg);
+        }
+
+        .custom-dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 8px);
+            min-width: 190px;
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            z-index: 30;
+            animation: slideUpFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dark .custom-dropdown-menu {
+            background: #212121;
+            border-color: #333333;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .custom-dropdown-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            text-align: left;
+            padding: 0.65rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .custom-dropdown-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .dark .custom-dropdown-item:hover {
+            background-color: #2a2a2a;
+        }
+
+        .custom-dropdown-item.selected {
+            color: var(--brand-accent);
+        }
+
         .tab-btn {
             position: relative;
             transition: color 0.3s ease;
@@ -324,7 +405,7 @@
                     </a>
                 </div>
                 <div class="flex items-center space-x-4 text-xs text-brand-muted/60 dark:text-brand-darkMuted/40">
-                    <span>Last Updated: July 2026</span>
+                    <span>Last Updated: October 2026</span>
                     <span class="w-1 h-1 rounded-full bg-brand-border"></span>
                     <div class="flex gap-3">
                         <a href="https://leetcode.com/kaunrahul/" target="_blank"
@@ -408,9 +489,25 @@
 
                 <!-- Experience -->
                 <div id="experience" class="tab-content">
+                    <div class="mb-6 flex justify-end">
+                        <div class="custom-dropdown relative" id="experience-dropdown">
+                            <button id="experience-filter-btn" class="custom-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                                <span id="experience-filter-label">All Experience</span>
+                                <svg class="chevron w-4 h-4 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="experience-filter-menu" class="custom-dropdown-menu hidden" role="listbox">
+                                <button class="custom-dropdown-item selected" data-value="all" role="option">All Experience</button>
+                                <button class="custom-dropdown-item" data-value="education" role="option">Education</button>
+                                <button class="custom-dropdown-item" data-value="internship" role="option">Internship</button>
+                                <button class="custom-dropdown-item" data-value="job" role="option">Job</button>
+                                <button class="custom-dropdown-item" data-value="opensource" role="option">Open Source</button>
+                            </div>
+                        </div>
+                    </div>
                     <div id="experience-timeline" class="max-w-3xl mx-auto py-4">
                         <!-- Experience injected here -->
                     </div>
+                    <p id="no-experience-results" class="text-center py-12 text-brand-muted hidden">No experience found for this filter.</p>
                 </div>
 
                 <!-- Skills -->
@@ -422,9 +519,23 @@
 
                 <!-- Certificates -->
                 <div id="certificates" class="tab-content">
+                    <div class="mb-6 flex justify-end">
+                        <div class="custom-dropdown relative" id="certificate-dropdown">
+                            <button id="certificate-filter-btn" class="custom-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                                <span id="certificate-filter-label">All Certificates</span>
+                                <svg class="chevron w-4 h-4 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="certificate-filter-menu" class="custom-dropdown-menu hidden" role="listbox">
+                                <button class="custom-dropdown-item selected" data-value="all" role="option">All</button>
+                                <button class="custom-dropdown-item" data-value="skills" role="option">Skills</button>
+                                <button class="custom-dropdown-item" data-value="hackathons" role="option">Hackathons</button>
+                            </div>
+                        </div>
+                    </div>
                     <div id="certificate-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Certificates injected here -->
                     </div>
+                    <p id="no-certificate-results" class="text-center py-12 text-brand-muted hidden">No certificates found for this filter.</p>
                 </div>
 
                 <!-- About -->
@@ -439,7 +550,7 @@
                         <div class="space-y-6 text-center md:text-left">
                             <h3 class="text-3xl font-bold">A Bit About Me</h3>
                             <p class="text-lg text-brand-muted dark:text-brand-darkMuted leading-relaxed">
-                                I'm a dedicated and ambitious first-year student pursuing a B.Tech in Computer Science & 
+                                I'm a dedicated and ambitious second-year student pursuing a B.Tech in Computer Science & 
                                 Engineering from G.B. Pant Engineering College, alongside a B.S. degree in Data Science & Applications from
                                 IIT Madras. My academic journey is driven by a profound passion for technology and a
                                 desire to build digital experiences that are both functional and impactful.
@@ -471,7 +582,7 @@
                                 alt="Rahul Arya" class="w-20 h-20 rounded-2xl object-cover">
                             <div>
                                 <p class="font-bold text-lg">Rahul Arya</p>
-                                <p class="text-sm text-brand-muted">1st Year @</p>
+                                <p class="text-sm text-brand-muted">2nd Year @</p>
                                 <p class="text-sm text-brand-muted">GB Pant & IIT Madras</p>
                                 <p class="text-sm text-brand-muted">Building for a Better Web</p>
                             </div>
@@ -556,6 +667,12 @@
     <footer
         class="w-[92%] md:max-w-[80%] mx-auto px-4 md:px-6 py-12 border-t border-brand-border dark:border-brand-darkBorder flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
         <p class="text-sm text-brand-muted dark:text-brand-darkMuted">&copy; 2026 Rahul Arya. All Rights Reserved.</p>
+        <div class="flex items-center gap-6">
+            <button id="blog-open-btn"
+                class="text-xs font-medium text-brand-muted hover:text-brand-accent transition-colors">Blogs</button>
+            <button id="llm-open-btn"
+                class="text-xs font-medium text-brand-muted hover:text-brand-accent transition-colors">llm.txt</button>
+        </div>
         <div class="flex gap-6 text-xs font-medium text-brand-muted">
             <a href="https://leetcode.com/kaunrahul/" target="_blank"
                 class="hover:text-brand-accent transition-colors">LeetCode</a>
@@ -565,6 +682,80 @@
                 class="hover:text-brand-accent transition-colors">CodeChef</a>
         </div>
     </footer>
+
+    <!-- Blog Modal -->
+    <div id="blog-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div id="blog-modal-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="relative ui-card !transform-none w-full max-w-4xl max-h-[85vh] overflow-y-auto rounded-3xl p-6 md:p-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <h3 class="text-2xl font-bold leading-none py-1">Blogs</h3>
+                    <div class="relative group inline-flex self-center items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-brand-accent/10 text-brand-accent border border-brand-accent/30 cursor-default shrink-0">
+                        Beta
+                        <button aria-label="About this beta section"
+                            class="w-4 h-4 rounded-full border border-current text-[9px] leading-none font-bold inline-flex items-center justify-center">i</button>
+                        <div class="hidden group-hover:block group-focus-within:block absolute left-1/2 -translate-x-1/2 top-full mt-2 w-56 z-10 px-3 py-2 rounded-xl text-xs font-normal normal-case tracking-normal bg-brand-darkBg text-brand-darkText dark:bg-white dark:text-brand-text shadow-xl">
+                            This section is in beta. Updates will follow as more blogs get added.
+                        </div>
+                    </div>
+                </div>
+                <button id="blog-close-btn" aria-label="Close blogs"
+                    class="p-2 rounded-xl border border-transparent hover:border-brand-border dark:hover:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="mb-6 flex justify-end">
+                <div class="relative w-full md:w-64">
+                    <input type="text" id="blog-search-input" placeholder="Search posts..."
+                        class="w-full pl-10 pr-4 py-2 rounded-full text-sm bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all">
+                    <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div id="blog-grid" class="space-y-6">
+                <!-- Posts injected here -->
+            </div>
+            <div class="text-center mt-8">
+                <button id="blog-load-more"
+                    class="hidden px-6 py-3 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder text-sm font-bold hover:bg-brand-border dark:hover:bg-brand-darkBorder transition-all">
+                    Load More
+                </button>
+            </div>
+                    <p id="no-blog-results" class="text-center py-12 text-brand-muted hidden">No posts yet. Check back soon.</p>
+        </div>
+    </div>
+
+    <!-- llm.txt Modal -->
+    <div id="llm-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div id="llm-modal-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="relative ui-card !transform-none w-full max-w-4xl max-h-[85vh] overflow-y-auto rounded-3xl p-6 md:p-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <h3 class="text-2xl font-bold leading-none py-1">llm.txt</h3>
+                    <div class="inline-flex self-center items-center gap-2 shrink-0">
+                        <button id="llm-copy-btn"
+                            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder hover:bg-brand-border dark:hover:bg-brand-darkBorder transition-all">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span id="llm-copy-label">Copy</span>
+                        </button>
+                        <button id="llm-download-btn"
+                            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-brand-accent text-white hover:opacity-90 transition-all shadow-lg shadow-brand-accent/20">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+                <button id="llm-close-btn" aria-label="Close llm.txt viewer"
+                    class="p-2 rounded-xl border border-transparent hover:border-brand-border dark:hover:border-brand-darkBorder hover:bg-brand-secondary dark:hover:bg-brand-darkSecondary transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <pre id="llm-content" class="whitespace-pre-wrap text-xs md:text-sm font-mono p-4 md:p-6 rounded-xl bg-brand-secondary dark:bg-brand-darkSecondary border border-brand-border dark:border-brand-darkBorder overflow-x-auto">Loading…</pre>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -585,37 +776,43 @@
                     title: 'Organizer | Praxis Hackathon 2025 | GDGoC GB Pant, Delhi',
                     issuer: 'Google Developer Groups on Campus, GB Pant DSEU Campus',
                     date: 'March 2026',
-                    link: 'https://www.creadefy.com/verify/CERT-1716D888-563F-40B3'
+                    link: 'https://www.creadefy.com/verify/CERT-1716D888-563F-40B3',
+                    tags: ['hackathons']
                 },
                 {
                     title: 'Participant (Rank 6) | Hack4Us Hackathon 2025',
                     issuer: 'Maharaja Surajmal Institute (MSI)',
                     date: 'Nov 2025',
-                    link: 'https://unstop.com/certificate-preview/97c47627-4843-487b-ab63-d507fc537848'
+                    link: 'https://unstop.com/certificate-preview/97c47627-4843-487b-ab63-d507fc537848',
+                    tags: ['hackathons']
                 },
                 {
                     title: 'Chatgpt for Everyone',
                     issuer: 'HCL GUVI',
                     date: 'Nov 2025',
-                    link: 'https://www.guvi.in/verify-certificate?id=5172m0da66V2Gk1429'
+                    link: 'https://www.guvi.in/verify-certificate?id=5172m0da66V2Gk1429',
+                    tags: ['skills']
                 },
                 {
                     title: 'Participant | HackFest Hackathon 2025',
                     issuer: 'GDG Cloud New Delhi',
                     date: 'Nov 2025',
-                    link: 'https://www.creadefy.com/verify/CERT-29F0DF25-6F9A-4155'
+                    link: 'https://www.creadefy.com/verify/CERT-29F0DF25-6F9A-4155',
+                    tags: ['hackathons']
                 },
                 {
                     title: 'Google Cloud Study Jam | Cohort 1',
                     issuer: 'GDG on Campus, GB Pant DSEU',
                     date: 'Oct 2025',
-                    link: 'https://www.skills.google/public_profiles/fccf39d9-4434-4f6a-9f74-da9eb733e9aa'
+                    link: 'https://www.skills.google/public_profiles/fccf39d9-4434-4f6a-9f74-da9eb733e9aa',
+                    tags: ['skills']
                 },
                 {
                     title: 'Google Cloud Compute Skill Badge',
                     issuer: 'Google Cloud Skills Boost',
                     date: 'Oct 2025',
-                    link: 'https://www.credly.com/badges/b5cd0e71-ccb5-4d78-b269-d2183673ddcd/public_url'
+                    link: 'https://www.credly.com/badges/b5cd0e71-ccb5-4d78-b269-d2183673ddcd/public_url',
+                    tags: ['skills']
                 }
             ];
 
@@ -694,14 +891,32 @@
                 },
             ];
 
+            // Add posts here, e.g.: { title: '...', date: '...', excerpt: '...', tags: ['...'], link: '...' }
+            const posts = [
+            ];
+
             // --- ELEMENTS ---
             const projectGrid = document.getElementById('project-grid');
             const certificateGrid = document.getElementById('certificate-grid');
             const skillsGrid = document.getElementById('skills-grid');
+            const blogGrid = document.getElementById('blog-grid');
             const experienceTimeline = document.getElementById('experience-timeline');
             const searchInput = document.getElementById('search-input');
             const filterContainer = document.getElementById('filter-container');
+            const experienceDropdown = document.getElementById('experience-dropdown');
+            const experienceFilterBtn = document.getElementById('experience-filter-btn');
+            const experienceFilterMenu = document.getElementById('experience-filter-menu');
+            const experienceFilterLabel = document.getElementById('experience-filter-label');
+            const certificateDropdown = document.getElementById('certificate-dropdown');
+            const certificateFilterBtn = document.getElementById('certificate-filter-btn');
+            const certificateFilterMenu = document.getElementById('certificate-filter-menu');
+            const certificateFilterLabel = document.getElementById('certificate-filter-label');
             const noResultsMessage = document.getElementById('no-results');
+            const noExperienceResults = document.getElementById('no-experience-results');
+            const noCertificateResults = document.getElementById('no-certificate-results');
+            const noBlogResults = document.getElementById('no-blog-results');
+            const blogSearchInput = document.getElementById('blog-search-input');
+            const blogLoadMore = document.getElementById('blog-load-more');
             const themeToggle = document.getElementById('theme-toggle');
             const htmlElement = document.documentElement;
             const tabContainer = document.getElementById('tab-container');
@@ -710,6 +925,11 @@
             // --- STATE ---
             let currentFilter = 'all';
             let currentSearchTerm = '';
+            let currentExperienceFilter = 'all';
+            let currentCertificateFilter = 'all';
+            let currentBlogSearch = '';
+            const BLOG_PAGE_SIZE = 5;
+            let visibleBlogCount = BLOG_PAGE_SIZE;
 
             // --- FUNCTIONS ---
             const renderProjects = () => {
@@ -751,7 +971,15 @@
             const renderCertificates = () => {
                 if (!certificateGrid) return;
                 certificateGrid.innerHTML = '';
-                certificates.forEach(cert => {
+                const filteredCertificates = certificates.filter(cert => {
+                    if (currentCertificateFilter === 'all') return true;
+                    const tags = (cert.tags || []).map(t => t.toLowerCase());
+                    if (tags.includes(currentCertificateFilter.toLowerCase())) return true;
+                    const haystack = `${cert.title} ${cert.issuer}`.toLowerCase();
+                    return haystack.includes(currentCertificateFilter.toLowerCase());
+                });
+                if (noCertificateResults) noCertificateResults.classList.toggle('hidden', filteredCertificates.length !== 0);
+                filteredCertificates.forEach(cert => {
                     const card = document.createElement('a');
                     card.href = cert.link;
                     card.target = '_blank';
@@ -767,6 +995,47 @@
                         <span class="text-[10px] font-bold text-brand-accent uppercase tracking-widest">${cert.date}</span>
                     `;
                     certificateGrid.appendChild(card);
+                });
+            };
+
+            const renderBlog = () => {
+                if (!blogGrid) return;
+                blogGrid.innerHTML = '';
+                const term = currentBlogSearch.trim().toLowerCase();
+                const filteredPosts = posts.filter(post => {
+                    if (!term) return true;
+                    const haystack = `${post.title} ${post.excerpt} ${(post.tags || []).join(' ')}`.toLowerCase();
+                    return haystack.includes(term);
+                });
+                if (noBlogResults) {
+                    noBlogResults.textContent = posts.length === 0 ? 'No posts yet. Check back soon.' : 'No posts match your search.';
+                    noBlogResults.classList.toggle('hidden', filteredPosts.length !== 0);
+                }
+                const visiblePosts = filteredPosts.slice(0, visibleBlogCount);
+                if (blogLoadMore) {
+                    const hasMore = filteredPosts.length > visiblePosts.length;
+                    blogLoadMore.classList.toggle('hidden', !hasMore);
+                    if (hasMore) blogLoadMore.textContent = `Load More (${visiblePosts.length} of ${filteredPosts.length})`;
+                }
+                visiblePosts.forEach(post => {
+                    const card = document.createElement('div');
+                    card.className = 'ui-card p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 w-full';
+                    card.innerHTML = `
+                        <div class="flex-grow">
+                            <span class="text-[10px] font-bold text-brand-accent uppercase tracking-widest">${post.date}</span>
+                            <h4 class="font-bold text-xl leading-tight mt-2 mb-3">${post.title}</h4>
+                            <p class="text-sm text-brand-muted dark:text-brand-darkMuted mb-4 leading-relaxed">${post.excerpt}</p>
+                            <div class="flex flex-wrap gap-2">
+                                ${(post.tags || []).map(tag => `<span class="px-3 py-1 rounded-md bg-brand-secondary dark:bg-brand-darkSecondary text-[10px] font-bold uppercase tracking-widest border border-brand-border dark:border-brand-darkBorder">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                        <a href="${post.link}" target="_blank"
+                            class="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand-accent text-white text-sm font-bold hover:opacity-90 transition-all shadow-lg shadow-brand-accent/20 whitespace-nowrap">
+                            Read More
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    `;
+                    blogGrid.appendChild(card);
                 });
             };
 
@@ -789,7 +1058,12 @@
             const renderExperience = () => {
                 if (!experienceTimeline) return;
                 experienceTimeline.innerHTML = '';
-                experiences.forEach(exp => {
+                const filteredExperiences = experiences.filter(exp => {
+                    if (currentExperienceFilter === 'all') return true;
+                    return (exp.type || '').toLowerCase() === currentExperienceFilter.toLowerCase();
+                });
+                if (noExperienceResults) noExperienceResults.classList.toggle('hidden', filteredExperiences.length !== 0);
+                filteredExperiences.forEach(exp => {
                     const div = document.createElement('div');
                     div.className = 'timeline-item';
                     div.innerHTML = `
@@ -825,6 +1099,8 @@
 
             // --- EVENT LISTENERS ---
             if (searchInput) searchInput.addEventListener('input', e => { currentSearchTerm = e.target.value.toLowerCase(); renderProjects(); });
+            if (blogSearchInput) blogSearchInput.addEventListener('input', e => { currentBlogSearch = e.target.value; visibleBlogCount = BLOG_PAGE_SIZE; renderBlog(); });
+            if (blogLoadMore) blogLoadMore.addEventListener('click', () => { visibleBlogCount += BLOG_PAGE_SIZE; renderBlog(); });
             if (filterContainer) filterContainer.addEventListener('click', e => {
                 if (e.target.classList.contains('filter-btn')) {
                     filterContainer.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -832,6 +1108,50 @@
                     currentFilter = e.target.dataset.filter;
                     renderProjects();
                 }
+            });
+            const setupDropdown = (dropdown, btn, menu, label, onSelect) => {
+                if (!dropdown || !btn || !menu) return;
+                const closeMenu = () => {
+                    menu.classList.add('hidden');
+                    dropdown.classList.remove('open');
+                    btn.setAttribute('aria-expanded', 'false');
+                };
+                btn.addEventListener('click', e => {
+                    e.stopPropagation();
+                    const isHidden = menu.classList.contains('hidden');
+                    document.querySelectorAll('.custom-dropdown-menu').forEach(m => m.classList.add('hidden'));
+                    document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
+                    if (isHidden) {
+                        menu.classList.remove('hidden');
+                        dropdown.classList.add('open');
+                        btn.setAttribute('aria-expanded', 'true');
+                    } else {
+                        closeMenu();
+                    }
+                });
+                menu.addEventListener('click', e => {
+                    const item = e.target.closest('.custom-dropdown-item');
+                    if (!item) return;
+                    menu.querySelectorAll('.custom-dropdown-item').forEach(i => i.classList.remove('selected'));
+                    item.classList.add('selected');
+                    if (label) label.textContent = item.textContent.trim();
+                    onSelect(item.dataset.value);
+                    closeMenu();
+                });
+                document.addEventListener('click', e => {
+                    if (!dropdown.contains(e.target)) closeMenu();
+                });
+                document.addEventListener('keydown', e => {
+                    if (e.key === 'Escape') closeMenu();
+                });
+            };
+            setupDropdown(experienceDropdown, experienceFilterBtn, experienceFilterMenu, experienceFilterLabel, value => {
+                currentExperienceFilter = value;
+                renderExperience();
+            });
+            setupDropdown(certificateDropdown, certificateFilterBtn, certificateFilterMenu, certificateFilterLabel, value => {
+                currentCertificateFilter = value;
+                renderCertificates();
             });
 
             if (tabContainer) tabContainer.addEventListener('click', e => {
@@ -846,12 +1166,99 @@
 
             if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
 
+            const blogModal = document.getElementById('blog-modal');
+            const blogOpenBtn = document.getElementById('blog-open-btn');
+            const blogCloseBtn = document.getElementById('blog-close-btn');
+            const blogOverlay = document.getElementById('blog-modal-overlay');
+            const openBlogModal = () => {
+                if (!blogModal) return;
+                visibleBlogCount = BLOG_PAGE_SIZE;
+                renderBlog();
+                blogModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeBlogModal = () => {
+                if (!blogModal) return;
+                blogModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+            if (blogOpenBtn) blogOpenBtn.addEventListener('click', openBlogModal);
+            if (blogCloseBtn) blogCloseBtn.addEventListener('click', closeBlogModal);
+            if (blogOverlay) blogOverlay.addEventListener('click', closeBlogModal);
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && blogModal && !blogModal.classList.contains('hidden')) closeBlogModal();
+            });
+
+            const llmModal = document.getElementById('llm-modal');
+            const llmOpenBtn = document.getElementById('llm-open-btn');
+            const llmCloseBtn = document.getElementById('llm-close-btn');
+            const llmOverlay = document.getElementById('llm-modal-overlay');
+            const llmContent = document.getElementById('llm-content');
+            const llmCopyBtn = document.getElementById('llm-copy-btn');
+            const llmCopyLabel = document.getElementById('llm-copy-label');
+            const llmDownloadBtn = document.getElementById('llm-download-btn');
+            let llmText = '';
+            const openLlmModal = () => {
+                if (!llmModal) return;
+                llmModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                if (!llmText && llmContent) {
+                    fetch('llm.txt')
+                        .then(res => { if (!res.ok) throw new Error('fetch failed'); return res.text(); })
+                        .then(text => { llmText = text; llmContent.textContent = text; })
+                        .catch(() => { llmContent.textContent = 'Could not load llm.txt.'; });
+                }
+            };
+            const closeLlmModal = () => {
+                if (!llmModal) return;
+                llmModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+            if (llmOpenBtn) llmOpenBtn.addEventListener('click', openLlmModal);
+            if (llmCloseBtn) llmCloseBtn.addEventListener('click', closeLlmModal);
+            if (llmOverlay) llmOverlay.addEventListener('click', closeLlmModal);
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && llmModal && !llmModal.classList.contains('hidden')) closeLlmModal();
+            });
+            if (llmCopyBtn) llmCopyBtn.addEventListener('click', () => {
+                if (!llmText) return;
+                const done = () => {
+                    if (llmCopyLabel) {
+                        llmCopyLabel.textContent = 'Copied';
+                        setTimeout(() => { llmCopyLabel.textContent = 'Copy'; }, 1500);
+                    }
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(llmText).then(done).catch(() => {});
+                } else {
+                    const ta = document.createElement('textarea');
+                    ta.value = llmText;
+                    document.body.appendChild(ta);
+                    ta.select();
+                    try { document.execCommand('copy'); done(); } catch (err) {}
+                    document.body.removeChild(ta);
+                }
+            });
+            if (llmDownloadBtn) llmDownloadBtn.addEventListener('click', () => {
+                if (!llmText) return;
+                const blob = new Blob([llmText], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'llm.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+
             // --- INITIALIZATION ---
             initTheme();
             renderProjects();
             renderCertificates();
             renderSkills();
             renderExperience();
+            renderBlog();
         });
     </script>
 </body>
