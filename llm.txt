@@ -1,0 +1,56 @@
+# Rahul Arya — Portfolio
+
+> Second-year B.Tech CSE (G.B. Pant DSEU) + B.S. Data Science (IIT Madras) student building for a better web. Portfolio, projects, experience, skills, certificates, and contact.
+
+- URL: https://dev-rahul-arya.github.io
+- Author: Rahul Arya
+- Email: rahularya0221@outlook.com
+- Last updated: October 2026
+
+## About
+Dedicated and ambitious second-year student pursuing B.Tech in Computer Science & Engineering from G.B. Pant Engineering College alongside a B.S. in Data Science & Applications from IIT Madras. Interested in web development, AI tooling/automation, and open source. Open for FREELANCE / INTERN.
+
+## Navigation
+- Projects: filterable (All / Web Dev / Design) + search
+- Experience: filterable dropdown (All / Education / Internship / Job / Open Source)
+- Skills: languages, frontend, tools, non-technical, currently exploring
+- Certificates: filterable dropdown (All / Skills / Hackathons)
+- About Me, Contact form (mailto), Resume (resume.pdf)
+
+## Skills
+- Languages: C, CPP, Python, JavaScript
+- Frontend: HTML5, CSS3, Bootstrap, Tailwind CSS, GSAP
+- Tools: Git, GitHub, MySQL
+- Non-technical: Team Leadership, Teaching
+- Exploring: React JS, React Native, Node JS, Express JS, MongoDB, Figma
+
+## Experience
+- Freelance Web Developer, Self-Employed (2022 - Present) [Job]
+- Open Source Contributor, OpenSource Programs (May 2026 - Present) [OpenSource] — GirScript Summer of Code 2026, Rank under 200
+- Full Stack Developer Intern, Quizcred (Feb 2026 - Apr 2026) [Internship]
+- AI Intern, Mirai School of Technology (Jan 2026 - Feb 2026) [Internship] — AI tools and n8n automations
+- Computer Science Student, G.B. Pant DSEU Okhla-1 Campus (2025 - Present) [Education]
+- Data Science Student, IIT Madras (2025 - Present) [Education]
+- School, Bhartiya Vidya Bhavan's Mehta Vidyalaya (2017 - 2025) [Education]
+
+## Projects
+- Chronic Disease Tracker Web Dashboard: patient log of daily health parameters and medication intake. Stack: Web, HTML, CSS, JS, PostgreSQL.
+  - GitHub: https://github.com/dev-rahul-arya/HACK-Chronic_Disease_Tracker_Web_Dashboard
+  - Live: https://dev-rahul-arya.github.io/HACK-Chronic_Disease_Tracker_Web_Dashboard/
+
+## Certificates
+- Organizer | Praxis Hackathon 2025 | GDGoC GB Pant, Delhi (Mar 2026) — Google Developer Groups on Campus [gdg, hackathon]: https://www.creadefy.com/verify/CERT-1716D888-563F-40B3
+- Participant (Rank 6) | Hack4Us Hackathon 2025 (Nov 2025) — Maharaja Surajmal Institute (MSI) [hackathon]: https://unstop.com/certificate-preview/97c47627-4843-487b-ab63-d507fc537848
+- ChatGPT for Everyone (Nov 2025) — HCL GUVI [hcl]: https://www.guvi.in/verify-certificate?id=5172m0da66V2Gk1429
+- Participant | HackFest Hackathon 2025 (Nov 2025) — GDG Cloud New Delhi [hackathon, gdg, google-cloud]: https://www.creadefy.com/verify/CERT-29F0DF25-6F9A-4155
+- Google Cloud Study Jam | Cohort 1 (Oct 2025) — GDG on Campus, GB Pant DSEU [google-cloud, gdg]: https://www.skills.google/public_profiles/fccf39d9-4434-4f6a-9f74-da9eb733e9aa
+- Google Cloud Compute Skill Badge (Oct 2025) — Google Cloud Skills Boost [google-cloud]: https://www.credly.com/badges/b5cd0e71-ccb5-4d78-b269-d2183673ddcd/public_url
+
+## Profiles
+- GitHub: https://github.com/dev-rahul-arya
+- LinkedIn: https://linkedin.com/in/dev-rahul-arya
+- X: https://x.com/kaun_rahul
+- LeetCode: https://leetcode.com/kaunrahul/
+- Codeforces: https://codeforces.com/profile/kaunrahul
+- CodeChef: https://www.codechef.com/users/kaunrahul
+- Discord: https://discord.com/invite/99AqWTMy
